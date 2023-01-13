@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 #1) IMPORT Data set ----------------------------------------------
-data = pd.read_csv('../data-sets/car_fleet_sample.csv')
+data = pd.read_csv('./data-sets/car_fleet_sample.csv')
 
 #2) IDENTIFY MISSING DATA ------------------------------------------
 # ISNULL is a powerful method used to help you FIND empty values in a table.
