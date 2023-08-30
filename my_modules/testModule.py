@@ -1,2 +1,2 @@
-def function1(x):
-    print("test1 !!!!!", x)
+def function1(text):
+    print("test1 !!!!!", text)

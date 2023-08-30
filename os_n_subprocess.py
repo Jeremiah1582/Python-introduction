@@ -1,6 +1,6 @@
-from .my_modules.testModule import test_module
+from my_modules.testModule import function1
 
-print(test_module.function1("hello world"))
+print(function1("this message is coming through a module function"))
 
 
 # what is a function? - instructions that tell the computer to do something
