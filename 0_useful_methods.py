@@ -1,4 +1,4 @@
-#26 of the TOP methods for complex data types in Python
+#26 of the TOP methods for data types and complex in Python
 
 # 1. append() - adds an element to the end of the list
 # 2. extend() - adds all elements of a list to the end of another list
