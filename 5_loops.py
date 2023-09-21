@@ -14,9 +14,9 @@ for x in range(1,25):
     print(x)
     
 # while loop 
-i=0
+i=0 
 while i < 10:
-    i+=1
+    i+=1 #increment the 'i' variable
     print(i)
 
 
