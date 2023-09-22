@@ -1,6 +1,10 @@
-# Composite Data Types 
-# what?: a data type made up of other data types
-# in python lists can be composite data types unlike Javascript
+# ------------------Collections & Composite Data Types---------------------
+
+# what?: 
+# a Collection is a made up of multiple units of data. 
+# a composite data type made up of different types of data types
+# in python lists can be composite data types unlike Javascript arrays are just collections
+# all composite data types are collections not all collections are composite data types
 
 # -----------primitive data types---------
 #String, Integer, Boolean, Long, Float, 
@@ -39,6 +43,9 @@ print(myFruitTuple[3]) #output Lemon
 print(myFruitTuple)
 
 print(type(["hello", "1993", ""])) #output <class 'list'>
+
+
+
 
 
 
