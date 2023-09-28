@@ -118,7 +118,7 @@ else:
 
 sentence="A dogmatic dog buys dogecoin to become rich and buy hotdogs every day."
 
-def replaceWord2(repWord:str,newWord:str,occurrence:int,longString:str):
+def replaceWord_func(repWord:str,newWord:str,occurrence:int,longString:str):
     allMatches = finditer(repWord,longString)
     count=0
     for i in allMatches:
@@ -128,4 +128,4 @@ def replaceWord2(repWord:str,newWord:str,occurrence:int,longString:str):
             end_idx=i.end()
             return longString[:start_Idx]+newWord+longString[end_idx:]
     
-print(replaceWord2('dog','cat',1, sentence))
+print(replaceWord_func('dog','cat',1, sentence))
