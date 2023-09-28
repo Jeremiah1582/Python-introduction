@@ -60,11 +60,12 @@ findall,
 search,
 split,
 sub,
-match, 
+match,
+finditer,
 IGNORECASE #removes upper/lower case sensitivity
 )
 
-my_string = 'hello this is my string i'
+my_string = 'hello this is my string is '
 my_long_string='re.search() function will search the regular expression pattern and return the first occurrence. Unlike Python re.match(), it will check all lines of the input string. The Python re.search() function returns a match object when the pattern is found and “null” if the pattern is not found'
 num_string='12345'
 
@@ -79,19 +80,19 @@ print(my_string.islower()) #are all characters are lowercase
 print(my_string.find('i'))# returns index of located string or error - remember to error handle
 found= my_string.index('his')# return index of string or error 
 print(found)
-new_string = my_string.replace('this', 'REPLaced')
+new_string = my_string.replace("is", 'was')
 
-print(new_string)
+print('using the replace method...',new_string)
 
 # --------------------REGEX Functions----------
 
 # findall(value, SearchString)
 found_all = findall('is',my_string) #return a list of found items in string or an empty list 
-print(found_all)
+print('this is the findall function....',found_all)
 
 # search(value, SearchString)
-searched = search('this', my_string) #returns a match that contains a tuple variable with the start and end of match string
-print(searched)
+searched = search('is', my_string) #returns a match that contains a tuple variable with the start and end of match string
+print('this is the search function...',searched)
 print(searched.group()) #returns string
 print(searched.span()) #return tuple 
 
@@ -100,13 +101,31 @@ list_of_string = split(',', my_string) # returns a list of strings that are spli
 print(list_of_string)
 
 # sub()
-updated_string = sub('i', 'I', my_string) #returns an updated string with the replaced matches
-print(updated_string)
+updated_string = sub('i', 'I', my_string,1) #returns an updated string with the replaced matches
+print('sub function ....',updated_string)
 
 # match()
 matches= match('re.Match', my_long_string) #similar to search but only searches the beginning of the string and return the object or None
-print(matches) 
-print(matches.span())#returns the tuple
+if matches:
+    print(matches.span())#returns the tuple
+else:
+    print('no Matches')
 
 
 
+# exercise
+# make a function that uses REGEX to find a word at a specific occurrence in a string and replace that word with a new word.
+
+sentence="A dogmatic dog buys dogecoin to become rich and buy hotdogs every day."
+
+def replaceWord2(repWord:str,newWord:str,occurrence:int,longString:str):
+    allMatches = finditer(repWord,longString)
+    count=0
+    for i in allMatches:
+        count+=1
+        if i.group() ==repWord and count ==occurrence:
+            start_Idx= i.start()
+            end_idx=i.end()
+            return longString[:start_Idx]+newWord+longString[end_idx:]
+    
+print(replaceWord2('dog','cat',1, sentence))
