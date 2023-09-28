@@ -118,14 +118,14 @@ else:
 
 sentence="A dogmatic dog buys dogecoin to become rich and buy hotdogs every day."
 
-def replaceWord_func(repWord:str,newWord:str,occurrence:int,longString:str):
+def replaceWord_func(repWord:str,newWord:str,occurrence:int,longString:str): #specifying the types of input
     allMatches = finditer(repWord,longString)#returns a callable_iterable 
     count=0
     for i in allMatches:
         count+=1
         if i.group() ==repWord and count==occurrence:
-            start_Idx= i.start()
-            end_idx=i.end()
-            return longString[:start_Idx] + newWord + longString[end_idx:] 
+            start_Idx= i.start() #store start index 
+            end_idx=i.end()#store end index
+            return longString[:start_Idx] + newWord + longString[end_idx:] #reconstruct and return new string 
     
 print(replaceWord_func('dog','cat',1, sentence))
