@@ -1,7 +1,7 @@
 # -----------------------------REGEX---------------------------
 # What? 
-# regular expression is for searching for matching patterns within strings 
-# a REGEX looks like \w+(?<=pre) this Regular Express is used like: re.findall(regex,string) 
+# regular expression are used for searching for matching patterns within strings 
+# a REGEX looks like "\w+(?<=pre)" this RegEx is used like: re.findall(regexPattern,string) 
 # It is like a who new programming language that you need to learn for optimising string search
 
 """
@@ -9,21 +9,24 @@ How to use RegEx?
 
 ---------RegEx characters ---------
     [] -a set of characters  
-    {} -exactly the specified number of occurances (e.g: "he.{2}o" )
+    {} -exactly the specified number of occurances of a character (e.g: "be{2}r"--matches beer NOT beeeer, ber )
+    {n,} -at least the specified number of occurances of a character (e.g: "be{2,}r"--matches beer,beeeer NOT ber )
+    {x,y} -specify a range of the specified charancter of occurances of a character (e.g: "be{2,3}r"--matches beer,beeer NOT beeeer,ber )
+    
     \ -Signals a special sequence (can also be used to escape special characters)
     . -any character (except a new line char) (e.g. "he..o")
-    ^ -string starts with... (e.g. "^Hello")  
+    ^ -string starts with... (e.g. "^Hello") (also used to exclude characters "h[^ip]o")
     $ -string ends with... (e.g. "planet$")
-    * -return zero or more occurrences of the same pattern (e.g. "he.*o")
-    ? -zero or one occurrence (e.g. "he.?o")
+    * -put after a character to indicate that the character may either not match at all or can match many times (e.g. "be*r" --matches with br,ber,beer)
+    ? -indicates that a character is optional (e.g. "colou?r" matches--colour,color)
     | -logical or (e.g. "hello|hallo")
-    + -one or more occurrences (e.g. "he.+o")
+    + - put after character to indicate that there is one or more occurrences (e.g. "be+r"--matches ber,beer,beeeeeeeeeer )
     () -used to capture a group
     
     e.g. search everything between and including this regex "he.*old"
  
  ----------------sequences--------------------
-    [xyz] -return match if any of characters are found
+    [xyz] -return match if any of characters are found (represents just 1 character)
     [012] -""
     [abc][pq] -Match letter a or b or c followed by either p or q.
     [a-e] -return match within a range 
@@ -36,14 +39,17 @@ How to use RegEx?
     \Z -return match only if match is at the end of the string 
     \b -e.g. of match for '\bJessa\b' matches with 'Jessa', 'Jessa.', '(Jessa)', 'Jessa Emma Kelly' but not 'JessaKelly' or 'Jessa5'
     \B - opposite of \b
-    \d -return match to any digit (short for [0-9])
-    \D -return match to any non digit (short for [^0-9])
-    \s -return match to any whitespace character (short for )
+    \d -match to any digit (short for [0-9])
+    \D -match to any non digit (short for [^0-9]) (e.g. '\d{4}' --will return groups of 4 digits )
+    \s -match to any whitespace character (short for )
     \S -Matches any non-whitespace character. (short for [^ \t\n\x0b\r\f])
-    \w -Matches any alphanumeric character. (short for character class [a-zA-Z_0-9])
-    \W -matches any non-alphanumeric characters (short for [^a-zA-Z_0-9])
+    \w -The expression \w is used to find letters, numbers and underscore characters (short for character class [a-zA-Z_0-9])
+    \W -opposite of above (short for [^a-zA-Z_0-9])
     
+    \1 -references:are like saying “match the same text as we did in the first group” '(a)b\1' --here \1 represents 'a'.its the same as writing 'aba'
+
 ---------Lookahead & Look behind patterns-----
+    
     (?=foo) -look ahead -- 
     (?<=foo) -look behind
     (?!foo) -Negative lookahead
@@ -51,7 +57,15 @@ How to use RegEx?
     
     e.g. 
     1) \w+(?=ssion) - This regex will match with the first part of the word in a string that ends in 'ssion' (e.g. 'EXPRE'ssion)
-    2) 
+    2) \d{1,4} - find string-digits containing at least 1 and at most 4 numbers side by side
+    3) \D[a-zA-Z]{1,4} - find non-digit text containing at least 1 and at most 4 characters side by side 
+    4) \D[a-zA-Z]{1,4} - find non-digit text containing at least 1 and at most 4 characters side by side 
+    5) (?:ha)-ha,(haa)-\1 -(?:)stops this group from being referenced by the \1, making the 1st reference (haa)  --matches with "ha-ha,haa-haa"
+    6) (?:ha)-ha,(haa)-\1 -(?:)stops this group from being referenced by the \1, making the 1st reference (haa)  --matches with "ha-ha,haa-haa"
+    7) (\*|\.) - using the escape character '\' to select special character '*' and '.'
+    8) ^[0-9] -matches number only at the beginning of the string 
+    9) .html$ -matches text that ends in .html
+    10) .*?r -match with the first occurrence of the ending in r (lazy matching) 
 """
 
 # REGEX in Code
