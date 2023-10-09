@@ -16,7 +16,6 @@
 # when working with data streams or large files like csv files. used to create iterators for abstract containers.
 
 # basic iterator:
-
 my_iterator= iter([0,1,2,3,4,5])#creating an iterator object/instance data type 
 print(next(my_iterator)) #output 0
 print(next(my_iterator)) #output 1
@@ -28,7 +27,7 @@ print('-----------------------------')
 # 
 
 
-
+# basic generator func
 def finite_sequence(n):
     num = 0
     while num < n:
